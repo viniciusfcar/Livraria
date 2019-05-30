@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta>
+<title></title>
+</head>
+<body>
+
+<!-- Sidebar - Menu -->
+	<div th:fragment="menu_esquerdo" >
+	 	<div class="sidebar" data-color="purple" data-background-color="white">
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class="nav-item active  ">
+                        <a class="nav-link" style="background: yellow" href="#">
+                            <i class="material-icons">home</i>
+                            <p>Home</p>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="collapse"
+                        data-target="#collapseOne" aria-expanded="false"
+                        aria-controls="collapseOne">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/livro/cadastro_livro}">
+                                <i class="material-icons">add_location</i>
+                                <p>Cadastrar Livro</p>
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" th:href="@{/autor/cadastro_autor}">
+                                <i class="material-icons">add_location</i>
+                                <p>Cadastrar Autor</p>
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" th:href="@{/editora/cadastro_editora}">
+                                <i class="material-icons">add_location</i>
+                                <p>Cadastrar Editora</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/categoria/cadastro_categoria}">
+                                <i class="material-icons">add_location</i>
+                                <p>Cadastrar Categoria</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  th:href="@{/livro/lista_livros}">
+                                <i class="material-icons">list</i>
+                                <p>Lista de Livros</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  th:href="@{/autor/lista_autores}">
+                                <i class="material-icons">list</i>
+                                <p>Lista de Autores</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  th:href="@{/editora/lista_editoras}">
+                                <i class="material-icons">list</i>
+                                <p>Lista de Editoras</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  th:href="@{/categoria/lista_categorias}">
+                                <i class="material-icons">list</i>
+                                <p>Lista de Categorias</p>
+                            </a>
+                        </li>
+                        <a class="btn btn-sm btn-dark" 
+	                       th:href="@{/logout}">Sair</a>
+                </ul>
+            </div>
+        </div>
+	</div>
+
+</body>
+</html>

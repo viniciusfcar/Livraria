@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Administrador - Cadastro</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" th:href="@{/css/material-dashboard.min.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/demo/demo.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style-main.css}"/>
+</head>
+<body>
+        <div class="content-wrapper">
+        	<div class="content">
+            	<div class="container-fluid">
+                	<div class="row">
+                    	<div class="col-md-12">
+                        	<div class="card">
+                            	<div class="card-header card-header-success">
+                                	<h4 class="card-title">Cadastro do Administrador</h4>
+                                	<p class="card-category">campos obrigatorios<span style="color: red">*</span></p>
+                            	</div>
+                            	<div class="card-body">
+                                	<form th:object="${administrador}" th:action="@{/administrador/salvar_administrador}" id="form" method="POST">
+                                    	<input id="id" name="id" type="hidden" th:field="*{id}" th:value="*{id}">  
+                                       <div class="row">
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label class="bmd-label-floating">Login<span style="color: red"> *</span></label>
+                                                   <input type="text" id="username" th:field="*{username}" class="form-input">
+                                                   <div id="username-div">
+
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label class="bmd-label-floating">senha<span style="color: red"> *</span></label>
+                                                   <input type="text" id="senha" th:field="*{senha}" class="form-input">
+                                                   <div id="senha-div">
+
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                    <button type="reset" id="reset_usuario" class="btn btn-danger pull-right">Limpar Campos</button>
+                                    <button id="cadastro_administrador" class="btn btn-success pull-right">Cadastrar</button>
+                                    <div class="clearfix"></div>
+                                	</form>
+                            	</div>
+                        	</div>
+                    	</div>
+                	</div>
+            	</div>
+        	</div>
+        </div>
+</body>
+</html>

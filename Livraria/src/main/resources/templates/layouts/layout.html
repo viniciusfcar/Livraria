@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+
+<title>Livraria - Gerenciador</title>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" th:href="@{/css/material-dashboard.min.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/demo/demo.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style-main.css}"/>
+</head>
+<body>
+	<div id="content-wrapper">
+
+		
+		<div th:replace="fragmentos/livraria/menu_esquerdo :: menu_esquerdo">
+		
+		</div>
+		<div class="main-panel"> 
+			<div class="content-wrapper" layout:fragment="corpo"></div>	
+		</div>
+	</div>
+
+</body>
+</html>

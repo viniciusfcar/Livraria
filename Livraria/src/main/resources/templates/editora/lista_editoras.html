@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html layout:decorate="~{'/layouts/layout'}">
+<head>
+    <meta charset="UTF-8">
+    <title>Livraria - Gerenciador</title>
+</head>
+<body>
+	<div class="content-wrapper" layout:fragment="corpo">
+        <div class="content-wrapper">
+        	<div class="content">
+            	<div class="container-fluid">
+                	<div class="row">
+                    	<div class="col-md-12">
+                        	<div class="card">
+                            <div class="card-header card-header-success">
+                                <h4 class="card-title">Lista de Editoras</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nome</th>
+                                            <th>Cidade</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="editora : ${editoras}">
+                                            <td th:text="${editora.id}"></td>
+                                            <td th:text="${editora.nome}"></td>
+                                            <td th:text="${editora.cidade}"></td>
+                                            <td>
+                                                <div class="btn-group pull-right">
+                                                    <a class="btn btn-sm btn-success" th:href="@{/editora/alterar_editora/{id}(id=${editora.id})}"
+                                                    >Editar</a> <a
+                                                        class="delete btn btn-sm btn-danger"
+                                                        th:href="@{/editora/delete_editora/{id}(id=${editora.id})}">Excluir</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="float-left">
+                    <ul>
+                        <li>
+                            <a href="https://www.creative-tim.com">
+                                Creative Tim
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://creative-tim.com/presentation">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://blog.creative-tim.com">
+                                Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.creative-tim.com/license">
+                                Licenses
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="copyright float-right">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>, made with <i class="material-icons">favorite</i> by
+                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+</body>
+</html>

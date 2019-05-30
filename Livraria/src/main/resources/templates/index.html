@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+
+<title>Livraria</title>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" th:href="@{/css/material-dashboard.min.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/demo/demo.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style-main.css}"/>
+</head>
+<body>
+	<div id="content-wrapper">
+		<div class="content-wrapper">
+	        <div class="content-wrapper">
+	        	<div class="content">
+	            	<div class="container-fluid">
+	                	<div class="row">
+	                    	<div class="col-md-12">
+	                        	<div class="card">
+	                        		<div class="card-header card-header-success">
+	                        			<h1>Seja Bem Vindo!</h1>
+		                        		<div class="card-title">
+		                        			<a th:href="@{/usuario/cadastro_usuario}">Cadastre-se</a> <br>
+		                        			<a th:href="@{/usuario/home}">Login Usuario</a><br>
+		                        			<a th:href="@{/administrador/home_adm}">Login Administrador</a>
+		                        		</div>
+	                        		</div> <br><br>	                        		
+	                        		<div class="card-header card-header-success">
+	                                	<h3 class="card-title">Livros Disponíveis</h4>
+	                            	</div>
+	                            	<div class="card-body">
+	                                <div class="table-responsive">
+	                                    <table class="table table-striped">
+	                                        <thead>
+	                                        <tr>
+	                                            <th>Titulo</th>
+	                                            <th>Sinopse</th>
+	                                            <th>Ano</th>
+	                                            <th>Edição</th>
+	                                            <th>Editora</th>
+	                                            <th>Categoria</th>
+	                                            <th>Preço</th>
+	                                            <th>Quantidade</th>                                          
+	                                        </tr>
+	                                        </thead>
+	                                        <tbody>
+	                                        <tr th:each="livro : ${livros}">
+	                                            <td th:text="${livro.titulo}"></td>
+	                                            <td th:text="${livro.sinopse}"></td>
+	                                            <td th:text="${livro.ano}"></td>
+	                                            <td th:text="${livro.edicao}"></td>
+	                                            <td th:text="${livro.editora.nome}"></td>
+	                                            <td th:text="${livro.categoria.nome}"></td>
+	                                            <td th:text="${livro.preco}"></td>  
+	                                            <td th:text="${livro.quantidade}"></td>                                            
+	                                        </tr>
+	                                        </tbody>
+	                                    </table>
+	                        	</div>
+	                        </div>
+	                     </div>
+	                 </div>
+	              </div>
+	        </div> 
+	    </div>               		
+	</div>
+
+</body>
+</html>
