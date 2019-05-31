@@ -21,14 +21,14 @@ public class AdministradorController {
 	@Autowired
 	private AdministradorService service;
 	
-	@GetMapping("/lista_administradores")
+	@GetMapping("lista_administradores")
 	public ModelAndView listaAdministradores() {
 		ModelAndView mv = new ModelAndView("administrador/lista_administradores");
 		mv.addObject("administradores", service.findAll());
 		return mv;
 	}
 	
-	@PostMapping("/salvar_administrador")
+	@PostMapping("salvar_administrador")
 	public ModelAndView save(@Valid Administrador administrador, BindingResult result) {
 		
 		if(result.hasErrors()) {
@@ -39,27 +39,27 @@ public class AdministradorController {
 		return listaAdministradores();
 	}
 	
-	@RequestMapping("/cadastro_administrador")
+	@RequestMapping("cadastro_administrador")
 	public ModelAndView cadastroAdministrador(Administrador administrador) {
 		ModelAndView mv = new ModelAndView("administrador/cadastro_administrador");
 		mv.addObject("administrador", administrador);
 		return mv;
 	}
 	
-	@GetMapping("/delete_administrador/{id}")
+	@GetMapping("delete_administrador/{id}")
 	public ModelAndView deleteAdministrador(@PathVariable("id") long id) {
 		service.delete(id);
 		return listaAdministradores();
 	}
 	
-	@GetMapping("/alterar_administrador/{id}")
+	@GetMapping("alterar_administrador/{id}")
 	public ModelAndView update(@PathVariable("id") long id) {
 		Administrador administrador = service.findOne(id);
 		return cadastroAdministrador(administrador);
 	}
 	
-	@GetMapping("/home_adm")
+	@GetMapping("home_adm")
 	public ModelAndView home() {
-		return new ModelAndView("/administrador/home_adm");
+		return new ModelAndView("administrador/home_adm");
 	}
 }
