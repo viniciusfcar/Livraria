@@ -43,14 +43,14 @@ public class UsuarioController {
 	
 	private static final String GET_MUNICIPIO_URL = "http://apps.widenet.com.br/busca-cep/api/cep/";
 		
-	@GetMapping("/lista_usuarios")
+	@GetMapping("lista_usuarios")
 	public ModelAndView listaUsuarios() {
-		ModelAndView mv = new ModelAndView("/usuario/lista_usuarios");
+		ModelAndView mv = new ModelAndView("usuario/lista_usuarios");
 		mv.addObject("usuarios", service.findAll());
 		return mv;
 	}
 	
-	@PostMapping("/salvar_usuario")
+	@PostMapping("salvar_usuario")
 	public ModelAndView save(@Valid Usuario usuario, BindingResult result) {
 		
 		System.out.println(usuario.toString());
@@ -63,38 +63,38 @@ public class UsuarioController {
 		return validacao();
 	}
 	
-	@RequestMapping("/cadastro_usuario")
+	@RequestMapping("cadastro_usuario")
 	public ModelAndView cadastroUsuario(Usuario usuario) {
-		ModelAndView mv = new ModelAndView("/usuario/cadastro_usuario");
+		ModelAndView mv = new ModelAndView("usuario/cadastro_usuario");
 		mv.addObject("usuario", usuario);
 		return mv;
 	}
 	
-	@GetMapping("/delete_usuario/{id}")
+	@GetMapping("delete_usuario/{id}")
 	public ModelAndView deleteUsuario(@PathVariable("id") long id) {
 		service.delete(id);
 		return listaUsuarios();
 	}
 	
-	@GetMapping("/alterar_usuario/{id}")
+	@GetMapping("alterar_usuario/{id}")
 	public ModelAndView update(@PathVariable("id") long id) {
 		Usuario usuario = service.findOne(id);
 		return cadastroUsuario(usuario);
 	}
 	
-	@GetMapping("/lista_livros")
+	@GetMapping("lista_livros")
 	public ModelAndView lista_livros() {
-		ModelAndView mv = new ModelAndView("/usuario/lista_livros");
+		ModelAndView mv = new ModelAndView("usuario/lista_livros");
 		mv.addObject("livros", serviceLivro.findAll());
 		return mv;
 	}
 	
-	@GetMapping("/home")
+	@GetMapping("home")
 	public ModelAndView home() {
 		return new ModelAndView("usuario/home");
 	}
 	
-	@GetMapping("/lista_pedidos")
+	@GetMapping("lista_pedidos")
 	public ModelAndView lista_pedidos() {
 		ModelAndView mv = new ModelAndView("usuario/lista_pedidos");
 		mv.addObject("pedidos", servicePedido.findAll());
@@ -102,7 +102,7 @@ public class UsuarioController {
 		return mv;
 	}
 	
-	@RequestMapping("/adicionar_pedido/{idLivro, idUsuario}")
+	@RequestMapping("adicionar_pedido/{idLivro, idUsuario}")
 	public ModelAndView adicionar_pedido(long idLivro, long idUsuario) {
 			
 		Date d = new Date();
@@ -139,9 +139,9 @@ public class UsuarioController {
 		
 	}
 	
-	@RequestMapping("/detalhes_pedido/{id}")
+	@RequestMapping("detalhes_pedido/{id}")
 	public ModelAndView detalhesPedido(@PathVariable("id") long id) {
-		ModelAndView mv = new ModelAndView("/usuario/detalhes_pedido");
+		ModelAndView mv = new ModelAndView("usuario/detalhes_pedido");
 		Pedido pedido = servicePedido.findOne(id);
 		List<Livro> livros = pedido.getLivros();
 		
@@ -153,9 +153,9 @@ public class UsuarioController {
 		return mv;
 	}
 	
-	@RequestMapping("/finalizar_pedido/{id}")
+	@RequestMapping("finalizar_pedido/{id}")
 	public ModelAndView finalizarPedido(@PathVariable("id") long id) {
-		ModelAndView mv = new ModelAndView("/usuario/finalizar_pedido");
+		ModelAndView mv = new ModelAndView("usuario/finalizar_pedido");
 		Pedido pedido = servicePedido.findOne(id);
 		pedido.setStatus(StatusPedido.ENCERRADO);
 		servicePedido.save(pedido);
@@ -166,9 +166,9 @@ public class UsuarioController {
 		return mv;
 	}
 	
-	@GetMapping("/detalhes_livro/{id}")
+	@GetMapping("detalhes_livro/{id}")
 	public ModelAndView detalhes_livro(@PathVariable("id") long id) {
-		ModelAndView mv = new ModelAndView("/usuario/detalhes_livro");
+		ModelAndView mv = new ModelAndView("usuario/detalhes_livro");
 		Livro livro = serviceLivro.findOne(id);
 		mv.addObject("livro", livro);
 		mv.addObject("autores", livro.getAutores());
@@ -176,13 +176,13 @@ public class UsuarioController {
 		return mv;
 	}
 	
-	@GetMapping("/validacao")
+	@GetMapping("validacao")
 	public ModelAndView validacao() {
-		ModelAndView mv = new ModelAndView("/usuario/validacao");
+		ModelAndView mv = new ModelAndView("usuario/validacao");
 		return mv;
 	}
 	
-	@RequestMapping("/cep/{cep}")
+	@RequestMapping("cep/{cep}")
 	public Usuario cep(String cep) {
 		
 		RestTemplate restTemplate = new RestTemplate();
