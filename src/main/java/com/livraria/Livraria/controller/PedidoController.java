@@ -22,35 +22,35 @@ public class PedidoController {
 	@Autowired
 	private LivroService serviceLivro;
 	
-	@GetMapping("/lista_pedidos")
+	@GetMapping("lista_pedidos")
 	public ModelAndView listaPedidos() {
-		ModelAndView mv = new ModelAndView("/pedido/lista_pedidos");
+		ModelAndView mv = new ModelAndView("pedido/lista_pedidos");
 		mv.addObject("pedidos", service.findAll());
 		mv.addObject("livros", serviceLivro.findAll());
 		return mv;
 	}
 	
-	@PostMapping("/salvar_pedido")
+	@PostMapping("salvar_pedido")
 	public ModelAndView save(Pedido pedido) {
 		service.save(pedido);
 		return listaPedidos();
 	}
 	
-	@RequestMapping("/cadastro_pedido")
+	@RequestMapping("cadastro_pedido")
 	public ModelAndView cadastroPedido(Pedido pedido) {
-		ModelAndView mv = new ModelAndView("/pedido/cadastro_pedido");
+		ModelAndView mv = new ModelAndView("pedido/cadastro_pedido");
 		mv.addObject("pedido", pedido);
 		mv.addObject("livros", serviceLivro.findAll());
 		return mv;
 	}
 	
-	@GetMapping("/delete_pedido/{id}")
+	@GetMapping("delete_pedido/{id}")
 	public ModelAndView deletePedido(@PathVariable("id") long id) {
 		service.delete(id);
 		return listaPedidos();
 	}
 	
-	@GetMapping("/alterar_pedido/{id}")
+	@GetMapping("alterar_pedido/{id}")
 	public ModelAndView update(@PathVariable("id") long id) {
 		Pedido pedido = service.findOne(id);
 		return cadastroPedido(pedido);
