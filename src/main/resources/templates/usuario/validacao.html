@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Usuario - Cadastro</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" th:href="@{/css/material-dashboard.min.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/demo/demo.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style-main.css}"/>
+</head>
+<body>
+        <div class="content-wrapper">
+        	<div class="content">
+            	<div class="container-fluid">
+                	<div class="row">
+                    	<div class="col-md-12">
+                        	<div class="card">
+                            	<div>
+                                	<h3 class="card-title">Cadastro efetuado com sucesso!</h3>
+                                	<p class="card-category">Faça o login e aproveite :)</p>
+                                	<a th:href="@{/usuario/home}" class="btn btn-dark">Login</a>
+                            	</div>
+                                
+                                <div class="clearfix"></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

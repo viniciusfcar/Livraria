@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml" 
+	layout:decorate="~{'/layouts/layout'}">
+<head>
+<title>Livraria - Gerenciador</title>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div class="content-wrapper" layout:fragment="corpo">
+        <div class="content-wrapper">
+        	<div class="content">
+            	<div class="container-fluid">
+                	<div class="row">
+                    	<div class="col-md-12">
+                        	<div class="card">
+                            	<div class="card-header card-header-success">
+                                	<h4 class="card-title">Cadastrar Livro</h4>
+                                	<p class="card-category">campos obrigatorios<span style="color: red">*</span></p>
+                            	</div>
+                            	<div class="card-body">
+                                	<form th:object="${livro}" th:action="@{/livro/salvar_livro}" id="form" method="post">
+                                    	<input id="id" name="id" type="hidden" th:field="*{id}"
+                                           th:value="*{id}">
+                                       <div class="row">
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label class="bmd-label-floating">Titulo<span style="color: red"> *</span></label>
+                                                   <input type="text" id="titulo" th:field="*{titulo}" class="form-input">
+                                                   <div id="titulo-div">
+
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label class="bmd-label-floating">Ano<span style="color: red"> *</span></label>
+                                                   <input type="text" id="ano" th:field="*{ano}" class="form-input">
+                                                   <div id="ano-div">
+
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label class="bmd-label-floating">Sinopse<span style="color: red"> *</span></label>
+                                                   <input type="text" id="sinopse" th:field="*{sinopse}" class="form-input">
+                                                   <div id="sinopse-div">
+
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label class="bmd-label-floating">Edição<span style="color: red"> *</span></label>
+                                                   <input type="text" id="edicao" th:field="*{edicao}" class="form-input">
+                                                   <div id="edicao-div">
+
+                                                   </div>									   	
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label class="bmd-label-floating">Peso (em KG)<span style="color: red"> *</span></label>
+                                                   <input type="text" id="peso" th:field="*{peso}" class="form-input">
+                                                   <div id="peso-div">
+
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label class="bmd-label-floating">Preço<span style="color: red"> *</span></label>
+                                                   <input type="text" id="preco" th:field="*{preco}" class="form-input">
+                                                   <div id="preco-div">
+
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                               <div class="form-group">
+                                               		<label class="bmd-label-floating">Autor(es):<span style="color: red"> *</span></label>
+                                               		<div th:each="autor : ${autores}">
+														<input type="checkbox" th:field="*{autores}" th:value="${autor.id}"> 
+														<span th:text="${autor.nome}"></span><br>
+													</div>
+                                               </div>
+                                           </div>
+                                        </div>
+                                        <div class="row">
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                               		<label class="bmd-label-floating">Editora:</label> 
+                                                	<select th:field="*{editora}">
+									   					<option value="-1"> -- Selecione Editora -- </option>
+									   					<option th:each="editora : ${editoras}" th:value="${editora.id}"
+									   						th:text="${editora.nome}"></option>
+									   				</select>
+                                               </div>
+                                             </div>
+                                             <div class="col-md-6">
+                                               <div class="form-group">
+                                               		<label class="bmd-label-floating">Categoria :</label>
+                                                	<select th:field="*{categoria}">									   					
+									   					<option value="-1"> -- Selecione Categoria -- </option>
+									   					<option th:each="categoria : ${categorias}" th:value="${categoria.id}"
+									   						th:text="${categoria.nome}"></option>
+									   				</select>
+                                               </div>
+                                           </div>
+                                         </div>
+                                         <div class="row">
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label class="bmd-label-floating">Quantidade<span style="color: red"> *</span></label>
+                                                   <input type="text" id="quantidade" th:field="*{quantidade}" class="form-input">
+                                                   <div id="quantidade-div">
+
+                                                   </div>
+                                               </div>   
+                                           </div>
+                                       </div>
+                                    <button id="cadastro_livro" class="btn btn-success pull-right">Cadastrar</button>
+                                    <button type="reset" id="reset_livro" class="btn btn-danger pull-right">Limpar Campos</button>
+                                    <div class="clearfix"></div>
+                                	</form>
+                            	</div>
+                        	</div>
+                    	</div>
+                	</div>
+            	</div>
+        	</div>
+        </div>
+      </div>
+</body>
+</html>

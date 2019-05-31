@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Usuario - Cadastro</title>
+<meta charset="UTF-8"> 
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" th:href="@{/css/material-dashboard.min.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/demo/demo.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style-main.css}"/>
+</head>
+<body>
+        <div class="content-wrapper">
+        	<div class="content">
+            	<div class="container-fluid">
+                	<div class="row">
+                    	<div class="col-md-12">
+                        	<div class="card">
+                            	<div class="card-header card-header-success">
+                                	<h4 class="card-title">Cadastro de Usuario</h4>
+                                	<p class="card-category">campos obrigatorios<span style="color: red">*</span></p>
+                            	</div>
+                            	<div class="card-body">
+                                	<form th:object="${usuario}" th:action="@{/usuario/salvar_usuario}" id="form" method="post">
+                                    	<input id="id" name="id" type="hidden" th:field="*{id}"
+                                           th:value="*{id}">
+                                       <div class="row">
+                                           <div class="col-md-6" th:classappend="${#fields.hasErrors('nome')}? 'has-error'">
+                                               <div class="form-group">
+                                                   <label class="bmd-label-floating">Nome<span style="color: red"> *</span></label>
+                                                   <input type="text" id="nome" th:field="*{nome}" class="form-input">
+                                                   <div id="nome-div">
+
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group" th:classappend="${#fields.hasErrors('cep')}? 'has-error'">
+                                                   <label class="bmd-label-floating">Cep<span style="color: red"> *</span></label>
+                                                   <input type="text" id="cep" th:field="*{cep}" class="form-input"  
+                                                   		onkeypress="mascaraCEP(this, '#####-###')" maxlength="8" onBlur="ValidaCep(cep)">
+                                                   <div id="cep-div">
+
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group" th:classappend="${#fields.hasErrors('rua')}? 'has-error'">
+                                                   <label class="bmd-label-floating">Rua<span style="color: red"> *</span></label>
+                                                   <input type="text" id="rua" th:field="*{rua}" class="form-input">
+                                                   <div id="rua-div">
+
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-6">
+                                               <div class="form-group" th:classappend="${#fields.hasErrors('bairro')}? 'has-error'">
+                                                   <label class="bmd-label-floating">Bairro<span style="color: red"> *</span></label>
+                                                   <input type="text" id="bairro" th:field="*{bairro}" class="form-input">
+                                                   <div id="bairro-div">
+
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group" th:classappend="${#fields.hasErrors('cidade')}? 'has-error'">
+                                                   <label class="bmd-label-floating">Cidade<span style="color: red"> *</span></label>
+                                                   <input type="text" id="cidade" th:field="*{cidade}" class="form-input">
+                                                   <div id="cidade-div">
+
+                                                   </div>									   	
+                                               </div>
+                                           </div>
+                                            <div class="col-md-6">
+                                               <div class="form-group" th:classappend="${#fields.hasErrors('estado')}? 'has-error'">
+                                                   <label class="bmd-label-floating">Estado<span style="color: red"> *</span></label>
+                                                   <input type="text" id="estado" th:field="*{estado}" class="form-input">
+                                                   <div id="estado-div">
+
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-6">
+                                               <div class="form-group" th:classappend="${#fields.hasErrors('username')}? 'has-error'">
+                                                   <label class="bmd-label-floating">Email<span style="color: red"> *</span></label>
+                                                   <input type="text" id="username" th:field="*{username}" class="form-input">
+                                                   <div id="username-div">
+
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group" th:classappend="${#fields.hasErrors('senha')}? 'has-error'">
+                                                   <label class="bmd-label-floating">senha<span style="color: red"> *</span></label>
+                                                   <input type="text" id="senha" th:field="*{senha}" class="form-input">
+                                                   <div id="senha-div">
+
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                    <button type="reset" id="reset_usuario" class="btn btn-danger pull-right">Limpar Campos</button>
+                                    <button id="cadastro_usuario" class="btn btn-success pull-right">Cadastrar</button>
+                                    <div class="clearfix"></div>
+                                	</form>
+                            	</div>
+                        	</div>
+                    	</div>
+                	</div>
+            	</div>
+        	</div>
+        </div>
+    <script th:src="@{/js/mascaras.js}"></script>
+</body>
+</html>
