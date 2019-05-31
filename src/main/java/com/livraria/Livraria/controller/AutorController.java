@@ -21,14 +21,14 @@ public class AutorController {
 	@Autowired
 	private AutorService service;
 	
-	@GetMapping("lista_autores")
+	@GetMapping("/lista_autores")
 	public ModelAndView listaAutores() {
 		ModelAndView mv = new ModelAndView("autor/lista_autores");
 		mv.addObject("autores", service.findAll());
 		return mv;
 	}
 	
-	@PostMapping("salvar_autor")
+	@PostMapping("/salvar_autor")
 	public ModelAndView save(@Valid Autor autor, BindingResult result) {
 		
 		if(result.hasErrors()) {
@@ -39,20 +39,20 @@ public class AutorController {
 		return listaAutores();
 	}
 	
-	@RequestMapping("cadastro_autor")
+	@RequestMapping("/cadastro_autor")
 	public ModelAndView cadastroAutor(Autor autor) {
 		ModelAndView mv = new ModelAndView("autor/cadastro_autor");
 		mv.addObject("autor", autor);
 		return mv;
 	}
 	
-	@GetMapping("delete_autor/{id}")
+	@GetMapping("/delete_autor/{id}")
 	public ModelAndView deleteLivro(@PathVariable("id") long id) {
 		service.delete(id);
 		return listaAutores();
 	}
 	
-	@GetMapping("alterar_autor/{id}")
+	@GetMapping("/alterar_autor/{id}")
 	public ModelAndView update(@PathVariable("id") long id) {
 		Autor autor = service.findOne(id);
 		return cadastroAutor(autor);
