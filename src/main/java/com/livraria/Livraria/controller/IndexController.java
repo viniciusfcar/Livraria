@@ -23,7 +23,7 @@ public class IndexController {
 	@RequestMapping("/")
 	public ModelAndView index() {
 		
-		ModelAndView mv = new ModelAndView("/index");
+		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("livros", serviceLivro.findAll());		
 		return mv;
 	}
