@@ -20,14 +20,14 @@ public class CategoriaController {
 	@Autowired
 	private CategoriaService service;
 	
-	@GetMapping("/lista_categorias")
+	@GetMapping("lista_categorias")
 	public ModelAndView listaCategorias() {
-		ModelAndView mv = new ModelAndView("/categoria/lista_categorias");
+		ModelAndView mv = new ModelAndView("categoria/lista_categorias");
 		mv.addObject("categorias", service.findAll());
 		return mv;
 	}
 	
-	@PostMapping("/salvar_categoria")
+	@PostMapping("salvar_categoria")
 	public ModelAndView save(@Valid Categoria categoria, BindingResult result) {
 		
 		if(result.hasErrors()) {
@@ -38,20 +38,20 @@ public class CategoriaController {
 		return listaCategorias();
 	}
 	
-	@RequestMapping("/cadastro_categoria")
+	@RequestMapping("cadastro_categoria")
 	public ModelAndView cadastroCategoria(Categoria categoria) {
 		ModelAndView mv = new ModelAndView("categoria/cadastro_categoria");
 		mv.addObject("categoria", categoria);
 		return mv;
 	}
 	
-	@GetMapping("/delete_categoria/{id}")
+	@GetMapping("delete_categoria/{id}")
 	public ModelAndView deleteCategoria(@PathVariable("id") long id) {
 		service.delete(id);
 		return listaCategorias();
 	}
 	
-	@GetMapping("/alterar_autor/{id}")
+	@GetMapping("alterar_autor/{id}")
 	public ModelAndView update(@PathVariable("id") long id) {
 		Categoria categoria = service.findOne(id);
 		return cadastroCategoria(categoria);
