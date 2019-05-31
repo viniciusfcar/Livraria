@@ -36,14 +36,14 @@ public class LivroController {
 	@Autowired
 	private CategoriaService servCategoria;
 		
-	@GetMapping("/lista_livros")
+	@GetMapping("lista_livros")
 	public ModelAndView listaLivros() {
-		ModelAndView mv = new ModelAndView("/livro/lista_livros");
+		ModelAndView mv = new ModelAndView("livro/lista_livros");
 		mv.addObject("livros", service.findAll());
 		return mv;
 	}
 	
-	@PostMapping("/salvar_livro")
+	@PostMapping("salvar_livro")
 	public ModelAndView save(@Valid Livro livro, BindingResult result) {
 		
 		if(result.hasErrors()) {
@@ -54,9 +54,9 @@ public class LivroController {
 		return listaLivros();
 	}
 	
-	@RequestMapping("/cadastro_livro")
+	@RequestMapping("cadastro_livro")
 	public ModelAndView cadastroLivro(Livro livro) {
-		ModelAndView mv = new ModelAndView("/livro/cadastro_livro");
+		ModelAndView mv = new ModelAndView("livro/cadastro_livro");
 		mv.addObject("autores", servAutor.findAll());
 		mv.addObject("editoras", servEditora.findAll());
 		mv.addObject("categorias", servCategoria.findAll());
@@ -64,21 +64,21 @@ public class LivroController {
 		return mv;
 	}
 	
-	@GetMapping("/delete_livro/{id}")
+	@GetMapping("delete_livro/{id}")
 	public ModelAndView deleteLivro(@PathVariable("id") long id) {
 		service.delete(id);
 		return listaLivros();
 	}
 	
-	@GetMapping("/alterar_livro/{id}")
+	@GetMapping("alterar_livro/{id}")
 	public ModelAndView alterar_livro(@PathVariable("id") long id) {
 		Livro livro = service.findOne(id);
 		return cadastroLivro(livro);
 	}
 	
-	@GetMapping("/detalhes_livro/{id}")
+	@GetMapping("detalhes_livro/{id}")
 	public ModelAndView detalhes_livro(@PathVariable("id") long id) {
-		ModelAndView mv = new ModelAndView("/livro/detalhes_livro");
+		ModelAndView mv = new ModelAndView("livro/detalhes_livro");
 		Livro livro = service.findOne(id);
 		mv.addObject("livro", livro);
 		mv.addObject("autores", livro.getAutores());
