@@ -36,9 +36,9 @@
 	                                            <td th:text="${livro.quantidade}"></td>
 	                                            <td>
 	                                            	<a class="btn btn-sm btn-dark" 
-	                                                   	th:href="@{/usuario/detalhes_livro/{id}(id=${livro.id})}">Detalhes</a>
+	                                                   	th:href="@{usuario/detalhes_livro/{id}(id=${livro.id})}">Detalhes</a>
 	                                               	<a th:if="${livro.quantidade > 0}" class="btn btn-sm btn-success" 
-	                                               		th:href="@{/usuario/adicionar_pedido/{idLivro, idUsuario}(idLivro=${livro.id}, idUsuario=${usuario.id})}">Comprar</a>
+	                                               		th:href="@{usuario/adicionar_pedido/{idLivro, idUsuario}(idLivro=${livro.id}, idUsuario=${usuario.id})}">Comprar</a>
 	                                            </td>
 	                                        </tr>
 	                                        </tbody>
