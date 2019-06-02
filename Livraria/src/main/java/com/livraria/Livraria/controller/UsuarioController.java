@@ -45,7 +45,7 @@ public class UsuarioController {
 		
 	@GetMapping("/lista_usuarios")
 	public ModelAndView listaUsuarios() {
-		ModelAndView mv = new ModelAndView("/usuario/lista_usuarios");
+		ModelAndView mv = new ModelAndView("usuario/lista_usuarios");
 		mv.addObject("usuarios", service.findAll());
 		return mv;
 	}
@@ -65,7 +65,7 @@ public class UsuarioController {
 	
 	@RequestMapping("/cadastro_usuario")
 	public ModelAndView cadastroUsuario(Usuario usuario) {
-		ModelAndView mv = new ModelAndView("/usuario/cadastro_usuario");
+		ModelAndView mv = new ModelAndView("usuario/cadastro_usuario");
 		mv.addObject("usuario", usuario);
 		return mv;
 	}
@@ -84,7 +84,7 @@ public class UsuarioController {
 	
 	@GetMapping("/lista_livros")
 	public ModelAndView lista_livros() {
-		ModelAndView mv = new ModelAndView("/usuario/lista_livros");
+		ModelAndView mv = new ModelAndView("usuario/lista_livros");
 		mv.addObject("livros", serviceLivro.findAll());
 		return mv;
 	}
@@ -155,7 +155,7 @@ public class UsuarioController {
 	
 	@RequestMapping("/finalizar_pedido/{id}")
 	public ModelAndView finalizarPedido(@PathVariable("id") long id) {
-		ModelAndView mv = new ModelAndView("/usuario/finalizar_pedido");
+		ModelAndView mv = new ModelAndView("usuario/finalizar_pedido");
 		Pedido pedido = servicePedido.findOne(id);
 		pedido.setStatus(StatusPedido.ENCERRADO);
 		servicePedido.save(pedido);
@@ -168,7 +168,7 @@ public class UsuarioController {
 	
 	@GetMapping("/detalhes_livro/{id}")
 	public ModelAndView detalhes_livro(@PathVariable("id") long id) {
-		ModelAndView mv = new ModelAndView("/usuario/detalhes_livro");
+		ModelAndView mv = new ModelAndView("usuario/detalhes_livro");
 		Livro livro = serviceLivro.findOne(id);
 		mv.addObject("livro", livro);
 		mv.addObject("autores", livro.getAutores());
@@ -178,7 +178,7 @@ public class UsuarioController {
 	
 	@GetMapping("/validacao")
 	public ModelAndView validacao() {
-		ModelAndView mv = new ModelAndView("/usuario/validacao");
+		ModelAndView mv = new ModelAndView("usuario/validacao");
 		return mv;
 	}
 	

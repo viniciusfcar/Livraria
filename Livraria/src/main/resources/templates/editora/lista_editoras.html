@@ -32,10 +32,10 @@
                                             <td th:text="${editora.cidade}"></td>
                                             <td>
                                                 <div class="btn-group pull-right">
-                                                    <a class="btn btn-sm btn-success" th:href="@{/editora/alterar_editora/{id}(id=${editora.id})}"
+                                                    <a class="btn btn-sm btn-success" th:href="@{editora/alterar_editora/{id}(id=${editora.id})}"
                                                     >Editar</a> <a
                                                         class="delete btn btn-sm btn-danger"
-                                                        th:href="@{/editora/delete_editora/{id}(id=${editora.id})}">Excluir</a>
+                                                        th:href="@{editora/delete_editora/{id}(id=${editora.id})}">Excluir</a>
                                                 </div>
                                             </td>
                                         </tr>

@@ -18,7 +18,9 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Entity
 public class Usuario implements  UserDetails{
@@ -226,5 +228,10 @@ public class Usuario implements  UserDetails{
 				+ "]";
 	}	
 	
+	public Usuario getUsuarioLogado(@AuthenticationPrincipal Usuario usuario, RedirectAttributes model){
+		usuario.getId();
+		return usuario;
+		  
+	}
 	
 }
