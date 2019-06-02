@@ -34,10 +34,10 @@
 	                                            <td th:text="${pedido.status}"></td>                                      
 	                                            <td>
                                                    <a class="btn btn-sm btn-success" 
-                                                    th:href="@{/usuario/detalhes_pedido/{id}(id=${pedido.id})}">Detalhes</a>
+                                                    th:href="@{usuario/detalhes_pedido/{id}(id=${pedido.id})}">Detalhes</a>
                                                     
                                                      <a th:if="${pedido.status != pedido.status.ENCERRADO}" class="delete btn btn-sm btn-danger"
-                                                        th:href="@{/usuario/finalizar_pedido/{id}(id=${pedido.id})}">Finalizar</a>
+                                                        th:href="@{usuario/finalizar_pedido/{id}(id=${pedido.id})}">Finalizar</a>
 	                                            </td>
 	                                        </tr>
 	                                        </tbody>
